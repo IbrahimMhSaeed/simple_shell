@@ -8,7 +8,7 @@
 int main()
 {
 	// loop of the shell
-	while (1)
+	while (true)
 	{
 		//show prompt
 		//getinput + tokenizing input

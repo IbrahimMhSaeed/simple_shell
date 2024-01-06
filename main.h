@@ -5,6 +5,6 @@
 #include <fcntl.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <bool.h>
+#include <stdbool.h>
 
 #endif
