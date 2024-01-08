@@ -1,19 +1,22 @@
 #include "main.h"
 
 /**
- * main - simple shell program
- * Return: 0 Always
+ * main - Entry point
+ * Return: 0 always (Success)
  */
 
-int main()
+int main(void)
 {
-	// loop of the shell
+	char **token;
+
 	while (true)
 	{
-		//show prompt
-		//getinput + tokenizing input
-		//search in PATH
-		
+		show_prompt();
+		token = get_input();
+		execute(token);
+		break;
 	}
 
+
+	return (0);
 }
