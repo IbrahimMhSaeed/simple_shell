@@ -27,8 +27,14 @@ void test_token(char **token)
 
 int execute(char **token)
 {
+
+	/**
+	 * handle Error cases
+	 */
+
 	int status;
 	pid_t child;
+	struct stat st;
 
 	/**
 	 * char *argv[] = {"/bin/ls", "-l", "tmp", NULL};
@@ -42,18 +48,23 @@ int execute(char **token)
 	 * test_token(argv);
 	 */
 
+	if (stat(token[0], &st) == -1)
+	{
+		perror("Error");
+		return (-1);
+	}
+
 	child = fork();
 
 	if (child == -1)
 	{
-		perror("Error:");
+		perror("Error");
 		return (-1);
 	} else if (child == 0)
 		execve(token[0], token, NULL);
 	else
 	{
 		wait(&status);
-		printf("I am the Grand father\n");
 	}
 	return (0);
 }

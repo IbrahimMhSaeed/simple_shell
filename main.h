@@ -9,6 +9,7 @@
 #include <string.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <sys/stat.h>
 
 void show_prompt(void);
 int num_words_in_command(char *command);
@@ -20,5 +21,12 @@ int execute(char **token);
  *
  * void test_token(char **token);
  */
+
+/**
+ * error functions
+ */
+
+void memory_allocation_error_buffer(char *buffer);
+void memory_allocation_error_2d(char **token, int row);
 
 #endif

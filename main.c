@@ -13,7 +13,8 @@ int main(void)
 	{
 		show_prompt();
 		token = get_input();
-		execute(token);
+		if (token != NULL)
+			execute(token);
 		break;
 	}
 

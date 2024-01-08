@@ -1,0 +1,5 @@
+you need to take care of this condition:
+
+echo "/bin/ls" | ./shell
+
+when ./shell is getting a user input from command line

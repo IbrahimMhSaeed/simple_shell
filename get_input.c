@@ -88,6 +88,12 @@ char **allocate_2d_array(int row, char *buffer)
 
 	token = malloc(sizeof(char *) * row);
 
+	if (token == NULL)
+	{
+		perror("Error: memory allocation error");
+		return (NULL);
+	}
+
 	i = 0;
 	word = strtok(buffer, " ");
 
@@ -95,6 +101,11 @@ char **allocate_2d_array(int row, char *buffer)
 	{
 		wordlen = get_word_len(word);
 		token[i] = malloc(sizeof(char) * wordlen);
+		if (token[i] == NULL)
+		{
+			memory_allocation_error_2d(token, row);
+			return (NULL);
+		}
 		_strcpy(token[i], word, wordlen);
 		word = strtok(NULL, " ");
 		i++;
@@ -123,15 +134,15 @@ char **get_input()
 	r = getline(&buffer, &len, stdin);
 	if (r == -1)
 	{
-		free(buffer);
-		return (token);
+		memory_allocation_error_buffer(buffer);
+		return (NULL);
 	}
 	words = num_words_in_command(buffer);
 	if (words == -1)
 	{
 		perror("Entered an empty command");
 		free(buffer);
-		return (token);
+		return (NULL);
 	}
 
 	token = allocate_2d_array(words, buffer);
