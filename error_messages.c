@@ -29,3 +29,23 @@ void memory_allocation_error_2d(char **token, int row)
 		free(token[i]);
 	free(token);
 }
+
+/**
+ * free_2d - free 2D array
+ * @token: 2D array to be freed
+ * Return: None
+ */
+
+void free_2d(char **token)
+{
+	int i;
+
+	i = 0;
+	while (token[i] != NULL)
+	{
+		free(token[i]);
+		i++;
+	}
+	free(token[i]);
+	free(token);
+}

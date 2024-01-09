@@ -1,5 +1,23 @@
-you need to take care of this condition:
+##User input has three options:
 
+#1) Full path
+/bin/ls  -> (note it starts with '/')
+
+-> Check for '/'
+-> Tokenization
+-> Execution
+
+#2) Command name
+ls -l    -> (note it doesn't starts with '/')
+
+-> Check for abscence of '/'
+-> Search in PATH
+-> Tokenization
+-> Execution
+
+#3) Command line arguments
 echo "/bin/ls" | ./shell
 
-when ./shell is getting a user input from command line
+-> Should hadle argv input
+-> Ready input format no need for tokenization
+

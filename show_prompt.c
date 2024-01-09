@@ -7,7 +7,7 @@
 
 void show_prompt(void)
 {
-	if (write(STDOUT_FILENO, "alxsimple@alxsimple-Ubuntu20.4:~ $", 34) == -1)
+	if (write(STDOUT_FILENO, "alxsimple@alxsimple-Ubuntu20.4:~ $ ", 35) == -1)
 	{
 		perror("Couldn't show prompt!");
 		exit(-1);

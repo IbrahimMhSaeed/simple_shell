@@ -1,25 +1,26 @@
 #include "main.h"
 
 /**
- * num_words_in_command - calculate the number of words in user input
- * @command: command from user
+ * num_words_in_string - calculate the number of words in user input
+ * @string: string to be checked for word nums
+ * @delim: delimeter
  * Return: number of words in command (including termination NULL)
  */
 
-int num_words_in_command(char *command)
+int num_words_in_string(char *string, char delim)
 {
 	int space;
 
 	space = 0;
 
-	if (command == NULL)
+	if (string == NULL)
 		return (-1);
 
-	while (*command != '\0')
+	while (*string != '\0')
 	{
-		if (*command == ' ')
+		if (*string == delim)
 			space++;
-		command++;
+		string++;
 	}
 
 	space += 2;
@@ -30,10 +31,11 @@ int num_words_in_command(char *command)
 /**
  * get_word_len - length of word
  * @word: word to be measured
+ * @delim: delimiter
  * Return: len of word && (-1) on fail
  */
 
-int get_word_len(char *word)
+int get_word_len(char *word, char delim)
 {
 	int len;
 
@@ -41,7 +43,7 @@ int get_word_len(char *word)
 		return (-1);
 	len = 0;
 
-	while (*word != '\0' && *word != '\n')
+	while (*word != '\0' && *word != '\n' && *word != delim)
 	{
 		word++;
 		len++;
@@ -76,10 +78,11 @@ void _strcpy(char *token, char *word, int wordlen)
  * allocate_2d_array - create 2d array for tokenization
  * @row: number of words in user input
  * @buffer: user input
+ * @delim: delimiter
  * Return: tokenized input in form of 2D array
  */
 
-char **allocate_2d_array(int row, char *buffer)
+char **allocate_2d_array(int row, char *buffer, char *delim)
 {
 
 	int i, wordlen;
@@ -95,19 +98,22 @@ char **allocate_2d_array(int row, char *buffer)
 	}
 
 	i = 0;
-	word = strtok(buffer, " ");
+	word = strtok(buffer, delim);
 
 	while (word != NULL)
 	{
-		wordlen = get_word_len(word);
-		token[i] = malloc(sizeof(char) * wordlen);
+		wordlen = get_word_len(word, '\0');
+		if (i == 0)
+			token[i] = malloc(sizeof(char) * 100);
+		else
+			token[i] = malloc(sizeof(char) * wordlen);
 		if (token[i] == NULL)
 		{
 			memory_allocation_error_2d(token, row);
 			return (NULL);
 		}
 		_strcpy(token[i], word, wordlen);
-		word = strtok(NULL, " ");
+		word = strtok(NULL, delim);
 		i++;
 	}
 	token[i] = NULL;
@@ -119,15 +125,12 @@ char **allocate_2d_array(int row, char *buffer)
  * Return: 2D array || or NULL on failure
  */
 
-char **get_input()
+char *get_input()
 {
 	char *buffer;
 	size_t len;
 	ssize_t r;
-	int words;
-	char **token;
 
-	token = NULL;
 	buffer = NULL;
 	len = 0;
 
@@ -137,16 +140,6 @@ char **get_input()
 		memory_allocation_error_buffer(buffer);
 		return (NULL);
 	}
-	words = num_words_in_command(buffer);
-	if (words == -1)
-	{
-		perror("Entered an empty command");
-		free(buffer);
-		return (NULL);
-	}
 
-	token = allocate_2d_array(words, buffer);
-
-	free(buffer);
-	return (token);
+	return (buffer);
 }
