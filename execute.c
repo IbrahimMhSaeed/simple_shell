@@ -48,7 +48,9 @@ int execute(char **token, char **env)
 		perror("Error");
 		return (-1);
 	} else if (child == 0)
+	{
 		execve(token[0], token, env);
+	}
 	else
 	{
 		wait(&status);

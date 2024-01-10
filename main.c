@@ -34,7 +34,11 @@ int main(int argc, char *argv[], char **env)
 		command = get_input();
 		token = command_tokenization(command, path);
 		if (token != NULL)
+		{
+			if (_strcmp(token[0], "exit") == 1)
+				exit(-1);
 			execute(token, env);
+		}
 	}
 
 
