@@ -1,11 +1,8 @@
 #include "main.h"
 
 /**
- *_env: built-in function
- *main: Entry point
- *Return: (0).
+ *_env - Display environment variables.
  */
-extern char **environ;
 
 void _env(void)
 {
@@ -17,6 +14,10 @@ void _env(void)
 	env++;
 	}
 }
+/**
+ * main - Entry point.
+ * Return: 0.
+ */
 
 int main(void)
 {
