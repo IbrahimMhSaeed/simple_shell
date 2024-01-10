@@ -19,44 +19,6 @@ void test_token(char **token)
 
 }
 
-/**
-
-int execute_arg(char **token)
-{
-	int status;
-	pid_t child;
-	struct stat st;
-
-	if (token == NULL)
-	{
-		perror("Error: Couldn't read command");
-		return (-1);
-	}
-	token++;
-
-	if (stat(*token, &st) == -1)
-	{
-		perror("Error");
-		return (-1);
-	}
-
-	child = fork();
-
-	if (child == -1)
-	{
-		perror("Error");
-		return (-1);
-	} else if (child == 0)
-		execve(*token, token, NULL);
-	else
-	{
-		wait(&status);
-	}
-
-	return (0);
-}
-
-*/
 
 /**
  * execute - execute user command

@@ -74,15 +74,14 @@ char *create_full_path(char *path, char *command, char *buffer)
 /**
  * add_directory_to_command - add directory to command
  * @token: command to be checked
- * @environ: global environment variable
+ * @path: global environment variable
  * Return: adjusted command
  */
 
-char **add_directory_to_command(char **token, char **environ)
+char **add_directory_to_command(char **token, char **path)
 {
 	int i;
 	char *buffer;
-	char **path;
 
 	if (token[0][0] == '/')
 		return (token);
@@ -94,8 +93,6 @@ char **add_directory_to_command(char **token, char **environ)
 		perror("Error: Memory allocation error");
 		return (NULL);
 	}
-
-	path = tokenize_path(environ);
 
 	i = 0;
 	while (path[i] != NULL)
@@ -115,11 +112,11 @@ char **add_directory_to_command(char **token, char **environ)
 /**
  * command_tokenization - tokenize user command
  * @buffer: user command in string format
- * @environ: global environmental variable
+ * @path: global environmental variable
  * Return: 2D array of tokenized command
  */
 
-char **command_tokenization(char *buffer, char **environ)
+char **command_tokenization(char *buffer, char **path)
 {
 	int words;
 	char **token;
@@ -136,7 +133,7 @@ char **command_tokenization(char *buffer, char **environ)
 
 	token = allocate_2d_array(words, buffer, " ");
 
-	token = add_directory_to_command(token, environ);
+	token = add_directory_to_command(token, path);
 
 	free(buffer);
 	return (token);

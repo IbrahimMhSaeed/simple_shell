@@ -12,15 +12,18 @@ int main(int argc, char *argv[], char **env)
 {
 	char *command;
 	char **token;
+	char **path;
 
-	/*
-	if (argc > 1)
-	{
-		command = argv[1];
-		token = command_tokenization(command);
-		execute_arg(token);
-	}
-	*/
+	/**
+	 * if (argc > 1)
+	 * {
+	 * command = argv[1];
+	 * token = command_tokenization(command);
+	 * execute_arg(token);
+	 * }
+	 */
+
+	path = tokenize_path(env);
 
 	(void) argc;
 	(void) argv;
@@ -29,7 +32,7 @@ int main(int argc, char *argv[], char **env)
 	{
 		show_prompt();
 		command = get_input();
-		token = command_tokenization(command, env);
+		token = command_tokenization(command, path);
 		if (token != NULL)
 			execute(token, env);
 	}

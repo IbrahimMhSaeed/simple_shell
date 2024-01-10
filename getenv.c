@@ -1,12 +1,5 @@
 #include "main.h"
 
-/**
- * Need to double check functions for errors
- *
- * Check failure States and Conditions
- *
- * See what functions should be added to the main.h file [$]
- */
 
 /**
  * _strcmp - compare to strings
