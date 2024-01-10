@@ -2,16 +2,17 @@
 
 #define MAX_INPUT_SIZE 1024
 /**
- *_exit : exit function to exit the shell
- *main :Entry oint.
- *Return: 0.
+ *_exit - exit function to terminate the shell
  */
 void _exit(void)
 {
 	printf("Exiting the shell...\n");
 	exit(0);
 }
-
+/**
+ *main - Entry point for the simple shell.
+ *Return: 0.
+ */
 int main(void)
 {
 	char input[MAX_INPUT_SIZE];
