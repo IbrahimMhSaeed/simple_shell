@@ -18,7 +18,7 @@ char *get_input();
 char **command_tokenization(char *buffer, char **environ);
 int execute(char **token, char **env);
 int execute_arg(char **token);
-
+void _env(void);
 /* allocation functions: */
 
 void free_2d(char **token);
