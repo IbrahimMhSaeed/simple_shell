@@ -9,15 +9,19 @@
 
 void adjust_token(char **token, char *buffer)
 {
-	int i;
+	int i, len;
 
 	i = 0;
 
+	len = get_word_len(buffer, '\0');
+	free(token[0]);
+	token[0] = malloc(sizeof(char) * len);
 	while (buffer[i] != '\0')
 	{
 		token[0][i] = buffer[i];
 		i++;
 	}
+	token[0][i] = '\0';
 }
 
 /**
@@ -86,7 +90,7 @@ char **add_directory_to_command(char **token, char **path)
 	if (token[0][0] == '/')
 		return (token);
 
-	buffer = malloc(sizeof(char) * 100);
+	buffer = malloc(sizeof(char) * 1024);
 
 	if (buffer == NULL)
 	{
@@ -135,6 +139,5 @@ char **command_tokenization(char *buffer, char **path)
 
 	token = add_directory_to_command(token, path);
 
-	free(buffer);
 	return (token);
 }

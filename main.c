@@ -24,23 +24,22 @@ int main(int argc, char *argv[], char **env)
 	path = tokenize_path(env);
 	if (!isatty(0))
 	{
-		command = get_input();
-		token = command_tokenization(command, path);
-
-		if (token != NULL)
+		while ((command = get_input()))
 		{
-			if (_strcmp(token[0], "exit") == 1)
-				exit(0);
-			execute(token, env);
+			command = clear_command(command);
+			token = command_tokenization(command, path);
+			if (token != NULL)
+			{
+				if (_strcmp(token[0], "exit") == 1)
+					exit(0);
+				execute(token, env);
+			}
 		}
-		free_2d(token);
 		free_2d(path);
-		free(command);
 		return (0);
 	}
 	(void) argc;
 	(void) argv;
-
 	while (true)
 	{
 		show_prompt();
@@ -53,8 +52,6 @@ int main(int argc, char *argv[], char **env)
 			execute(token, env);
 		}
 	}
-	free_2d(token);
 	free_2d(path);
-	free(command);
 	return (0);
 }

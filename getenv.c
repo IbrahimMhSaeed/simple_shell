@@ -91,10 +91,13 @@ char **tokenize_path(char **environ)
 
 	index = get_word_len(env, '=');
 	len = get_word_len(env, '\0');
-	envcp = malloc(sizeof(char) * (len - index));
+	envcp = malloc(sizeof(char) * 1024);
 
 	if (envcp == NULL)
+	{
 		perror("Error: Memory allocation error");
+		return (NULL);
+	}
 	_strcpy(envcp, &env[index], len);
 
 	numPaths = num_words_in_string(envcp, ':');

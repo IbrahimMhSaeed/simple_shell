@@ -20,6 +20,7 @@ char *get_non_interactive();
 char **command_tokenization(char *buffer, char **environ);
 int execute(char **token, char **env);
 int execute_arg(char **token);
+char *clear_command(char *command);
 void _env(void);
 /* void _exit(void); */
 /* allocation functions: */
