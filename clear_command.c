@@ -34,6 +34,7 @@ char *clear_command(char *command)
 
 	if (newCommand == NULL)
 	{
+		printf("I am here\n");
 		free(command);
 		perror("Error: Memory allocation error");
 		return (NULL);

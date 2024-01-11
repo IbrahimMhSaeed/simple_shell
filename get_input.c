@@ -139,7 +139,6 @@ char *get_input()
 	r = getline(&buffer, &len, stdin);
 	if (r == -1)
 	{
-		memory_allocation_error_buffer(buffer);
 		return (NULL);
 	}
 
