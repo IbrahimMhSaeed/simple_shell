@@ -51,7 +51,7 @@ char *_getenv(char *name, char **environ)
 	char *word;
 
 	i = 0;
-	word = malloc(sizeof(char) * 50);
+	word = malloc(sizeof(char) * 1024);
 	if (word == NULL)
 	{
 		perror("Error: Memory allocation error");
@@ -62,10 +62,14 @@ char *_getenv(char *name, char **environ)
 	{
 		word = get_name(word, environ[i]);
 		if (_strcmp(word, name) == 1)
+		{
+			free(word);
 			return (environ[i]);
+		}
 
 		i++;
 	}
+	free(word);
 	return (NULL);
 
 }

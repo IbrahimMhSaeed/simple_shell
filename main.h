@@ -10,11 +10,13 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <sys/stat.h>
+#include <signal.h>
 
 /* Main functions: */
 
 void show_prompt(void);
 char *get_input();
+char *get_non_interactive();
 char **command_tokenization(char *buffer, char **environ);
 int execute(char **token, char **env);
 int execute_arg(char **token);
