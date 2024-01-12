@@ -93,8 +93,8 @@ char **allocate_2d_array(int row, char *buffer, char *delim)
 
 	if (token == NULL)
 	{
-		perror("Error: memory allocation error");
 		free(buffer);
+		perror("Error: memory allocation error");
 		return (NULL);
 	}
 
@@ -109,8 +109,8 @@ char **allocate_2d_array(int row, char *buffer, char *delim)
 
 		if (token[i] == NULL)
 		{
-			memory_allocation_error_2d(token, row);
 			free(buffer);
+			memory_allocation_error_2d(token, row);
 			return (NULL);
 		}
 		_strcpy(token[i], word, wordlen);
@@ -139,7 +139,8 @@ char *get_input()
 	r = getline(&buffer, &len, stdin);
 	if (r == -1)
 	{
-		return (NULL);
+		free(buffer);
+		exit(0);
 	}
 
 	return (buffer);

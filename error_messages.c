@@ -1,5 +1,6 @@
 #include "main.h"
 
+
 /**
  * memory_allocation_error_buffer - free memory and print error
  * @buffer: the buffer to be freed
