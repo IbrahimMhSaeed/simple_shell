@@ -32,14 +32,13 @@ int main(int argc, char *argv[], char **env)
 			{
 				if (_strcmp(token[0], "exit") == 1)
 					exit(0);
-				execute(token, env);
+				execute(token, env, argv[0]);
 			}
 		}
 		free_2d(path);
 		return (0);
 	}
 	(void) argc;
-	(void) argv;
 	while (true)
 	{
 		show_prompt();
@@ -49,7 +48,7 @@ int main(int argc, char *argv[], char **env)
 		{
 			if (_strcmp(token[0], "exit") == 1)
 				exit(0);
-			execute(token, env);
+			execute(token, env, argv[0]);
 		}
 	}
 	free_2d(path);

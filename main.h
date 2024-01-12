@@ -18,7 +18,7 @@ void show_prompt(void);
 char *get_input();
 char *get_non_interactive();
 char **command_tokenization(char *buffer, char **environ);
-int execute(char **token, char **env);
+int execute(char **token, char **env, char *argv);
 int execute_arg(char **token);
 char *clear_command(char *command);
 void _env(void);

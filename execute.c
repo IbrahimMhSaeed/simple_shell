@@ -27,7 +27,7 @@ void test_token(char **token)
  * Return: 0 always (Success)
  */
 
-int execute(char **token, char **env)
+int execute(char **token, char **env, char *argv)
 {
 	int status;
 	pid_t child;
@@ -36,7 +36,7 @@ int execute(char **token, char **env)
 	if (stat(token[0], &st) == -1)
 	{
 		free_2d(token);
-		perror("Error");
+		perror(argv);
 		return (-1);
 	}
 
