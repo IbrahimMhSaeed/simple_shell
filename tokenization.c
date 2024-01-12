@@ -87,7 +87,7 @@ char **add_directory_to_command(char **token, char **path)
 	int i;
 	char *buffer;
 
-	if (token[0][0] == '/')
+	if (token[0][0] == '/' || token[0][0] == '.')
 		return (token);
 
 	buffer = malloc(sizeof(char) * 1024);
@@ -129,11 +129,7 @@ char **command_tokenization(char *buffer, char **path)
 
 	words = num_words_in_string(buffer, ' ');
 	if (words == -1)
-	{
-		perror("Entered an empty command");
-		free(buffer);
 		return (NULL);
-	}
 
 	token = allocate_2d_array(words, buffer, " ");
 
