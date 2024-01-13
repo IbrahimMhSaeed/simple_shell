@@ -11,9 +11,10 @@ int empty_command(char *buffer)
 	int i;
 
 	i = 0;
-	while (buffer[i] != '\n')
+	/* while (buffer[i] != '\n' && buffer[i + 1] != '\0') */
+	while (buffer[i] != '\0')
 	{
-		if (buffer[i] != 32)
+		if (buffer[i] != 32 && buffer[i] != '\n')
 			return (1);
 		i++;
 	}

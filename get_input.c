@@ -139,15 +139,17 @@ char *get_input()
 	r = getline(&buffer, &len, stdin);
 	if (r == -1)
 	{
-		write(STDOUT_FILENO, "\n\0", 1);
+		fflush(stdin);
 		free(buffer);
 		exit(0);
 	}
+
 	if (empty_command(buffer) == -1)
 	{
 		free(buffer);
 		return (NULL);
 	}
+
 
 	return (buffer);
 }
