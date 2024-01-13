@@ -46,7 +46,7 @@ int main(int argc, char *argv[], char **env)
 			if (token != NULL)
 			{
 				if (_strcmp(token[0], "exit") == 1)
-					exit(0);
+					exit_0(token, path);
 				execute(token, env, argv[0]);
 			}
 			free_2d(path);
