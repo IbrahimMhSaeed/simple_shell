@@ -45,6 +45,7 @@ void test_token(char **token);
 
 /* error functions */
 
+int empty_command(char *buffer);
 void memory_allocation_error_buffer(char *buffer);
 void memory_allocation_error_2d(char **token, int row);
 

@@ -18,6 +18,7 @@ void handle_sigint(int sig)
 	(void) sig;
 	write(STDOUT_FILENO, "\n", 1);
 	show_prompt();
+
 }
 
 /**

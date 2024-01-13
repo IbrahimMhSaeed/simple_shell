@@ -127,6 +127,8 @@ char **command_tokenization(char *buffer, char **path)
 
 	token = NULL;
 
+	if (buffer == NULL)
+		return (NULL);
 	words = num_words_in_string(buffer, ' ');
 	if (words == -1)
 		return (NULL);
