@@ -31,10 +31,12 @@ void handle_sigint(int sig)
 
 int main(int argc, char *argv[], char **env)
 {
+	int status;
 	char *command;
 	char **token;
 	char **path;
 
+	status = 0;
 	signal(SIGINT, handle_sigint);
 	if (!isatty(0))
 	{
@@ -46,12 +48,12 @@ int main(int argc, char *argv[], char **env)
 			if (token != NULL)
 			{
 				if (_strcmp(token[0], "exit") == 1)
-					exit_0(token, path);
-				execute(token, env, argv[0]);
+					exit_0(token, path, status);
+				status = execute(token, env, argv[0]);
 			}
 			free_2d(path);
 		}
-		return (2);
+		return (status);
 	}
 	(void) argc;
 	while (true)
@@ -63,10 +65,10 @@ int main(int argc, char *argv[], char **env)
 		if (token != NULL)
 		{
 			if (_strcmp(token[0], "exit") == 1)
-				exit_0(token, path);
-			execute(token, env, argv[0]);
+				exit_0(token, path, status);
+			status = execute(token, env, argv[0]);
 		}
 		free_2d(path);
 	}
-	return (2);
+	return (status);
 }

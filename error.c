@@ -29,9 +29,9 @@ int empty_command(char *buffer)
  * Return: None
  */
 
-void exit_0(char **token, char **path)
+void exit_0(char **token, char **path, int status)
 {
 	free_2d(path);
 	free_2d(token);
-	exit(0);
+	exit(status);
 }

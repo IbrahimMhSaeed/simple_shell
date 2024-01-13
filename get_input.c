@@ -139,7 +139,6 @@ char *get_input()
 	r = getline(&buffer, &len, stdin);
 	if (r == -1)
 	{
-		fflush(stdin);
 		free(buffer);
 		exit(0);
 	}

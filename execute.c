@@ -57,5 +57,7 @@ int execute(char **token, char **env, char *argv)
 		wait(&status);
 		free_2d(token);
 	}
-	return (0);
+	if (status == 512)
+		status = 2;
+	return (status);
 }
