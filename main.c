@@ -49,7 +49,10 @@ int main(int argc, char *argv[], char **env)
 			{
 				if (_strcmp(token[0], "exit") == 1)
 					exit_0(token, path, status);
-				status = execute(token, env, argv[0]);
+				else if (_strcmp(token[0], "env") == 1)
+					_env(env);
+				else
+					status = execute(token, env, argv[0]);
 			}
 			free_2d(path);
 		}
@@ -66,7 +69,10 @@ int main(int argc, char *argv[], char **env)
 		{
 			if (_strcmp(token[0], "exit") == 1)
 				exit_0(token, path, status);
-			status = execute(token, env, argv[0]);
+			else if (_strcmp(token[0], "env") == 1)
+				_env(env);
+			else
+				status = execute(token, env, argv[0]);
 		}
 		free_2d(path);
 	}

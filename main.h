@@ -21,7 +21,8 @@ char **command_tokenization(char *buffer, char **environ);
 int execute(char **token, char **env, char *argv);
 int execute_arg(char **token);
 char *clear_command(char *command);
-void _env(void);
+void _env(char **env);
+int _putchar(char c);
 void exit_0(char **token, char **path, int status);
 /* void _exit(void); */
 /* allocation functions: */
