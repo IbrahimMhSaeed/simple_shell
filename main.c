@@ -51,7 +51,7 @@ int main(int argc, char *argv[], char **env)
 			}
 			free_2d(path);
 		}
-		return (0);
+		return (2);
 	}
 	(void) argc;
 	while (true)
@@ -68,5 +68,5 @@ int main(int argc, char *argv[], char **env)
 		}
 		free_2d(path);
 	}
-	return (0);
+	return (2);
 }
